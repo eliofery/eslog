@@ -1,6 +1,6 @@
 # eslog : 🌈 slog.Handler that writes prettier logs
 
-Package "eslog" implements a [slog.Handler](https://pkg.go.dev/log/slog#Handler)
+Package **eslog** implements a [slog.Handler](https://pkg.go.dev/log/slog#Handler)
 that writes prettier logs. Two modes are supported: **pretty** and **json**.
 
 Supported logging levels:
@@ -71,7 +71,7 @@ logger.Fatal("Fatal example", slog.Any("message", "fatal message"))
 
 ### Customize Attributes
 
-"ReplaceAttr" can be used to alter or drop attributes. See [slog.HandlerOptions](https://pkg.go.dev/log/slog#HandlerOptions) for details.
+**ReplaceAttr** can be used to alter or drop attributes. See [slog.HandlerOptions](https://pkg.go.dev/log/slog#HandlerOptions) for details.
 
 ```go
 lvl := new(slog.LevelVar)
