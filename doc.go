@@ -5,15 +5,15 @@ contains two additional logging levels Trace and Fatal.
 
 Includes [Logger] that combines functionality for setting logging level.
 
-// Demonstrates how to configure and use the logger with
-// various logging levels and message types.
-// It sets up the logger with custom configuration, including logging level and output format.
-// Then, it overrides the logging level for demonstration purposes.
-// Finally, it logs messages at different levels using the configured logger.
+Demonstrates how to configure and use the logger with
+various logging levels and message types.
+It sets up the logger with custom configuration, including logging level and output format.
+Then, it overrides the logging level for demonstration purposes.
+Finally, it logs messages at different levels using the configured logger.
 
 	// Configures the logger with the specified settings.
 	config := eslog.Config{
-		Level:     slog.LevelInfo,
+		Level:     "info", // trace, debug, info, warn, error, fatal (info: default)
 		AddSource: true,
 		JSON:      false,
 	}
@@ -32,12 +32,12 @@ Includes [Logger] that combines functionality for setting logging level.
 	}), lvl)
 
 	// Overrides the logging level.
-	logger.SetLevel(LevelTrace)
-	logger.SetLevel(slog.LevelDebug)
-	logger.SetLevel(slog.LevelInfo)
-	logger.SetLevel(slog.LevelWarn)
-	logger.SetLevel(slog.LevelError)
-	logger.SetLevel(LevelFatal)
+	logger.SetLevel(eslog.LevelTrace)
+	//logger.SetLevel(slog.LevelDebug)
+	//logger.SetLevel(slog.LevelInfo)
+	//logger.SetLevel(slog.LevelWarn)
+	//logger.SetLevel(slog.LevelError)
+	//logger.SetLevel(eslog.LevelFatal)
 
 	// Logs messages at different levels.
 	logger.Trace("Trace example", slog.Any("message", "trace message"))

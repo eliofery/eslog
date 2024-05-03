@@ -1,6 +1,6 @@
 # eslog : 🌈 slog.Handler that writes prettier logs
 
-Package `eslog` implements a [slog.Handler](https://pkg.go.dev/log/slog#Handler)
+Package "eslog" implements a [slog.Handler](https://pkg.go.dev/log/slog#Handler)
 that writes prettier logs. Two modes are supported: **pretty** and **json**.
 
 Supported logging levels:
@@ -34,7 +34,7 @@ go get github.com/eliofery/eslog
 ```go
 // Configures the logger with the specified settings.
 config := eslog.Config{
-    Level:     slog.LevelInfo,
+    Level:     "info", // trace, debug, info, warn, error, fatal (info: default)
     AddSource: true,
     JSON:      false,
 }
@@ -53,12 +53,12 @@ logger := eslog.New(pretty.NewHandler(os.Stdout, &pretty.HandlerOptions{
 }), lvl)
 
 // Overrides the logging level.
-logger.SetLevel(LevelTrace)
-logger.SetLevel(slog.LevelDebug)
-logger.SetLevel(slog.LevelInfo)
-logger.SetLevel(slog.LevelWarn)
-logger.SetLevel(slog.LevelError)
-logger.SetLevel(LevelFatal)
+logger.SetLevel(eslog.LevelTrace)
+//logger.SetLevel(slog.LevelDebug)
+//logger.SetLevel(slog.LevelInfo)
+//logger.SetLevel(slog.LevelWarn)
+//logger.SetLevel(slog.LevelError)
+//logger.SetLevel(eslog.LevelFatal)
 
 // Logs messages at different levels.
 logger.Trace("Trace example", slog.Any("message", "trace message"))
@@ -71,9 +71,12 @@ logger.Fatal("Fatal example", slog.Any("message", "fatal message"))
 
 ### Customize Attributes
 
-`ReplaceAttr` can be used to alter or drop attributes. See [`slog.HandlerOptions`](https://pkg.go.dev/log/slog#HandlerOptions) for details.
+"ReplaceAttr" can be used to alter or drop attributes. See [slog.HandlerOptions](https://pkg.go.dev/log/slog#HandlerOptions) for details.
 
 ```go
+lvl := new(slog.LevelVar)
+lvl.Set(slog.LevelInfo)
+	
 eslog.New(pretty.NewHandler(os.Stdout, &pretty.HandlerOptions{
     SlogOptions: &slog.HandlerOptions{
         ReplaceAttr: func(_ []string, a slog.Attr) slog.Attr {
@@ -134,6 +137,9 @@ eslog.New(pretty.NewHandler(os.Stdout, &pretty.HandlerOptions{
 You can still use methods from the standard package slog.
 
 ```go
+lvl := new(slog.LevelVar)
+lvl.Set(eslog.LevelTrace)
+	
 // NewTextHandler
 eslog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{}), lvl)
 
