@@ -15,13 +15,13 @@ Supported logging levels:
 
 Logging formatting in **Pretty** mode. In this mode, it's easy to navigate to the file position where the log was called.
 
-![Prettier example](screen.png)
+![Prettier example](https://raw.githubusercontent.com/eliofery/eslog/assets/screen.png)
 
 ## JSON
 
 Logging formatting in **JSON** mode.
 
-![JSON example](screen2.png)
+![JSON example](https://raw.githubusercontent.com/eliofery/eslog/assets/screen2.png)
 
 ## Installation
 
