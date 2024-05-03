@@ -23,12 +23,12 @@ type replaceAttrFn func(groups []string, attr slog.Attr) slog.Attr
 
 // LevelConf is a mapping of logging levels to their respective names and colors for formatting.
 var LevelConf = map[slog.Leveler]NameColor{
-	eslog.LevelTrace: NameColor{"TRACE", color.WhiteString},
-	slog.LevelDebug:  NameColor{"DEBUG", color.HiWhiteString},
-	slog.LevelInfo:   NameColor{"INFO", color.HiGreenString},
-	slog.LevelWarn:   NameColor{"WARN", color.HiYellowString},
-	slog.LevelError:  NameColor{"ERROR", color.HiMagentaString},
-	eslog.LevelFatal: NameColor{"FATAL", color.HiRedString},
+	eslog.LevelTrace: {"TRACE", color.WhiteString},
+	slog.LevelDebug:  {"DEBUG", color.HiWhiteString},
+	slog.LevelInfo:   {"INFO", color.HiGreenString},
+	slog.LevelWarn:   {"WARN", color.HiYellowString},
+	slog.LevelError:  {"ERROR", color.HiMagentaString},
+	eslog.LevelFatal: {"FATAL", color.HiRedString},
 }
 
 // dateTime formats the date and time of a logging record.
