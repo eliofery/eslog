@@ -73,6 +73,9 @@ type Logger interface {
 
 	// Printerer is an interface for printing messages.
 	Printerer
+
+	// Slogger returns the underlying [slog.Logger].
+	Slogger() *slog.Logger
 }
 
 // logger represents a structure that implements the [Logger] interface.
@@ -91,6 +94,11 @@ func New(handler slog.Handler, lvl *slog.LevelVar) Logger {
 		logger: log,
 		level:  lvl,
 	}
+}
+
+// Slogger returns the underlying [slog.Logger].
+func (l *logger) Slogger() *slog.Logger {
+	return l.logger
 }
 
 // SetLevel sets the logging level.
